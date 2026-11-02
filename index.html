@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCOREBUG OCR — Free Scoreboard OCR for Windows & iOS</title>
+  <meta name="description" content="SCOREBUG OCR is a free sports scoreboard OCR application for Windows and iOS. It reads arena LED scoreboard images and recognizes scores, game clocks, and shot clocks in real time for vMix and OBS Studio.">
+  
+  <!-- Tailwind CSS CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyberDark: '#07080c',
+            cyberCard: 'rgba(13, 16, 24, 0.75)',
+            cyberCyan: '#00f0ff',
+            cyberGreen: '#00ff9d',
+            cyberRed: '#ff3344'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Editorial Styles (DOPS Agency Inspired) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cyberDark text-slate-100 antialiased selection:bg-cyan-400 selection:text-black min-h-screen relative bg-grid">
+
+  <!-- Ambient Radiant Glow Blooms -->
+  <div class="ambient-glow-cyan top-[-100px] left-1/4"></div>
+  <div class="ambient-glow-green top-[1200px] right-[-100px]"></div>
+
+  <!-- =================================================================== -->
+  <!-- 1. MINIMAL EDITORIAL NAVIGATION (DOPS Agency Style) -->
+  <!-- =================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 sm:px-8 pointer-events-none">
+    <div class="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto">
+      
+      <!-- Brand Logo Wordmark -->
+      <a href="#hero" class="flex items-center gap-3 group bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full hover:border-cyan-400/50 transition">
+        <!-- Custom OCR Optical Reticle Icon -->
+        <svg class="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" stroke-opacity="0.3"></circle>
+          <path d="M12 3v3m0 12v3M3 12h3m12 0h3"></path>
+          <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+        </svg>
+        <span class="font-display font-extrabold tracking-wider text-sm text-white">
+          SCOREBUG<span class="text-cyan-400">OCR</span>
+        </span>
+        <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase font-bold">
+          FREE
+        </span>
+      </a>
+
+      <!-- Minimal Index Menu (Center Pill) -->
+      <nav class="hidden md:flex items-center gap-6 bg-black/60 backdrop-blur-xl border border-white/10 px-6 py-2.5 rounded-full text-xs font-mono">
+        <a href="#hero" class="nav-spy-link text-gray-400 hover:text-white transition">00 // OVERVIEW</a>
+        <a href="#recognition" class="nav-spy-link text-gray-400 hover:text-white transition">01 // RECOGNITION</a>
+        <a href="#workflows" class="nav-spy-link text-gray-400 hover:text-white transition">02 // WORKFLOWS</a>
+        <a href="#getting-started" class="nav-spy-link text-gray-400 hover:text-white transition">03 // GET STARTED</a>
+        <a href="#windows-setup" class="nav-spy-link text-gray-400 hover:text-white transition">04 // WINDOWS</a>
+        <a href="#ios-setup" class="nav-spy-link text-gray-400 hover:text-white transition">05 // iOS</a>
+      </nav>
+
+      <!-- Prominent Free Download Button (Right Pill) -->
+      <div class="flex items-center gap-2">
+        <a href="#windows-setup" class="btn-editorial-primary text-xs sm:text-sm py-2.5 px-5 shadow-lg">
+          <span>Free Downloads</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =================================================================== -->
+  <!-- 2. FULL-SCREEN HERO SECTION -->
+  <!-- =================================================================== -->
+  <section id="hero" class="min-h-screen relative flex flex-col justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto w-full">
+      
+      <!-- Kicker Tag -->
+      <div class="mb-6 flex flex-wrap items-center gap-3">
+        <div class="tech-kicker">
+          <span class="pulse-dot"></span>
+          <span>LIVE SPORTS COMPUTER VISION // OCR ENGINE</span>
+        </div>
+        <div class="tech-kicker green">
+          <span class="pulse-dot"></span>
+          <span>100% FREE TO DOWNLOAD FOR WINDOWS & iOS</span>
+        </div>
+      </div>
+
+      <!-- Bold Oversized Editorial Title -->
+      <div class="mb-8">
+        <h1 class="editorial-title text-white">
+          READ SCOREBOARDS.<br>
+          <span class="text-cyan-400">STREAM SCORES.</span><br>
+          ZERO OPERATORS.
+        </h1>
+      </div>
+
+      <!-- Concise Description -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+        <div class="lg:col-span-8">
+          <p class="font-tech text-xl sm:text-2xl text-slate-300 leading-snug">
+            <strong>SCOREBUG OCR</strong> reads physical arena sports scoreboard displays using real-time optical character recognition (OCR) and delivers instant scores, game clocks, and shot clocks directly into <span class="text-white font-bold">vMix</span>, <span class="text-white font-bold">OBS Studio</span>, and <span class="text-white font-bold">Apple iOS</span> graphics overlays.
+          </p>
+        </div>
+        
+        <div class="lg:col-span-4 flex flex-col gap-3">
+          <a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary w-full text-center py-4">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+            <span>Download for Windows (105 MB)</span>
+          </a>
+          <a href="#ios-setup" class="btn-editorial-ghost w-full text-center py-3.5 text-xs">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.3c.6-1.06 1.05-2.52.88-3.99-1.22.05-2.69.82-3.52 1.8-.74.85-1.39 2.22-1.21 3.55 1.36.1 2.76-.71 3.85-1.36z"/></svg>
+            <span>Apple iOS Setup & Source (633 KB)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Trust & Free Message Strip -->
+      <div class="border-t border-white/10 pt-6 flex flex-wrap items-center justify-between gap-6 text-xs font-mono text-gray-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>100% FREE SOFTWARE</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-cyan-400">✓</span>
+          <span>NO WATERMARKS</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-cyan-400">✓</span>
+          <span>NO ACCOUNT OR CREDIT CARD REQUIRED</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-cyan-400">✓</span>
+          <span>WINDOWS 10 & 11 (64-BIT) + APPLE iOS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 3. INTERACTIVE SCOREBOARD RECOGNITION SECTION -->
+  <!-- =================================================================== -->
+  <section id="recognition" class="min-h-screen relative flex flex-col justify-center py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    
+    <!-- Giant Background Section Number (Editorial Style) -->
+    <div class="absolute right-8 top-12 editorial-giant-num">01</div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      
+      <!-- Section Header -->
+      <div class="mb-10 max-w-2xl">
+        <div class="tech-kicker mb-3">
+          <span class="pulse-dot"></span>
+          <span>01 // SCOREBOARD RECOGNITION</span>
+        </div>
+        <h2 class="editorial-title text-3xl sm:text-5xl text-white mb-4">
+          HOW COMPUTER VISION READS ARENA DIGITS
+        </h2>
+        <p class="font-tech text-base text-gray-300">
+          Point a camera at any physical stadium LED scoreboard. SCOREBUG OCR applies 4-corner perspective dewarping, isolates LED digit segments, and converts the visuals into structured broadcast numbers in sub-milliseconds.
+        </p>
+      </div>
+
+      <!-- Interactive Arena Simulator Card -->
+      <div class="editorial-card p-4 sm:p-7 shadow-2xl">
+        <div class="corner-crosshair top-left"></div>
+        <div class="corner-crosshair top-right"></div>
+        <div class="corner-crosshair bottom-left"></div>
+        <div class="corner-crosshair bottom-right"></div>
+
+        <!-- Vision Mode Toolbar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6">
+          <div class="flex items-center gap-2 text-xs font-mono text-cyan-400">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>INTERACTIVE OCR FIELD INSPECTOR</span>
+          </div>
+
+          <div class="flex items-center bg-black/60 p-1 rounded-full border border-white/10 text-xs font-mono">
+            <button onclick="setVisionMode('camera')" data-mode-btn="camera" class="px-3.5 py-1.5 rounded-full bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-400/50 transition">
+              1. Camera View
+            </button>
+            <button onclick="setVisionMode('keystone')" data-mode-btn="keystone" class="px-3.5 py-1.5 rounded-full border border-transparent text-gray-400 hover:text-white transition">
+              2. 4-Corner Keystone
+            </button>
+            <button onclick="setVisionMode('binary')" data-mode-btn="binary" class="px-3.5 py-1.5 rounded-full border border-transparent text-gray-400 hover:text-white transition">
+              3. Binary Threshold
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulated Arena Display Viewport -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Scoreboard Canvas (8 Cols) -->
+          <div class="lg:col-span-8 bg-black rounded-2xl border border-white/10 p-4 sm:p-6 flex flex-col justify-between min-h-[360px] relative overflow-hidden">
+            
+            <!-- Feed Status Bar -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 border-b border-white/10 pb-2 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-red-500 font-bold animate-pulse">● LIVE INPUT</span>
+                <span>HDMI CAPTURE CARD (1080P60)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-cyan-400">FPS: 60.0</span>
+                <span class="text-emerald-400">INFERENCE: 2.8ms</span>
+              </div>
+            </div>
+
+            <!-- Scoreboard Frame with Interactive Bounding Boxes -->
+            <div id="scoreboardDisplayFrame" class="relative w-full h-[220px] sm:h-[260px] bg-[#090c14] rounded-xl border border-white/10 p-4 flex flex-col justify-between scanline-overlay">
+              
+              <!-- Arena Header -->
+              <div class="flex items-center justify-between border-b border-white/5 pb-1">
+                <span class="font-tech text-xs tracking-widest text-gray-500 font-bold">CHAMPIONSHIP ARENA // SCOREBOARD</span>
+                <span class="text-[10px] font-mono text-cyan-400">7-SEGMENT ENGINE</span>
+              </div>
+
+              <!-- Main LED Digits -->
+              <div class="grid grid-cols-3 gap-2 items-center text-center my-auto">
+                
+                <!-- Home Team -->
+                <div class="p-2">
+                  <div class="font-tech font-bold text-gray-400 text-sm sm:text-base">LAL</div>
+                  <div id="simHomeScore" class="led-digits-score text-4xl sm:text-6xl font-black">98</div>
+                  <div class="text-[10px] font-mono text-gray-500 mt-1">HOME</div>
+                </div>
+
+                <!-- Clock & Shot Clock (Center) -->
+                <div class="p-2 border-x border-white/10">
+                  <div class="text-[10px] font-mono text-cyan-400 font-bold mb-1">PERIOD <span id="simPeriod">4</span></div>
+                  <div id="simClock" class="led-digits-clock text-3xl sm:text-5xl font-black">00:28.4</div>
+                  <div class="mt-2 flex items-center justify-center gap-2">
+                    <span class="text-[10px] font-mono text-gray-400">SHOT:</span>
+                    <span id="simShotClock" class="led-digits-shot text-xl sm:text-3xl font-black">14</span>
+                  </div>
+                </div>
+
+                <!-- Away Team -->
+                <div class="p-2">
+                  <div class="font-tech font-bold text-gray-400 text-sm sm:text-base">GSW</div>
+                  <div id="simAwayScore" class="led-digits-score text-4xl sm:text-6xl font-black">94</div>
+                  <div class="text-[10px] font-mono text-gray-500 mt-1">AWAY</div>
+                </div>
+
+              </div>
+
+              <!-- Interactive OCR Target Boxes -->
+              <div onclick="selectBox('clock')" data-field="clock" class="ocr-bounding-box active" style="top: 24%; left: 34%; width: 32%; height: 34%;">
+                <div class="ocr-tag">CLOCK: <span class="box-val font-bold">00:28.4</span></div>
+              </div>
+              <div onclick="selectBox('shot')" data-field="shot" class="ocr-bounding-box" style="top: 62%; left: 42%; width: 16%; height: 28%;">
+                <div class="ocr-tag">SHOT: <span class="box-val font-bold">14</span></div>
+              </div>
+              <div onclick="selectBox('home')" data-field="home" class="ocr-bounding-box" style="top: 26%; left: 6%; width: 22%; height: 48%;">
+                <div class="ocr-tag">HOME: <span class="box-val font-bold">98</span></div>
+              </div>
+              <div onclick="selectBox('away')" data-field="away" class="ocr-bounding-box" style="top: 26%; left: 72%; width: 22%; height: 48%;">
+                <div class="ocr-tag">AWAY: <span class="box-val font-bold">94</span></div>
+              </div>
+
+              <!-- Controls Toolbar -->
+              <div class="flex items-center justify-between border-t border-white/5 pt-2 text-xs font-mono">
+                <button id="simClockToggleBtn" onclick="toggleClockSimulation()" class="px-3 py-1 bg-white/10 hover:bg-cyan-500/20 text-cyan-300 rounded-full flex items-center gap-1.5 transition">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  Pause Clock
+                </button>
+                <div class="flex items-center gap-2">
+                  <span class="text-gray-500">Test Score:</span>
+                  <button onclick="adjustScore('home', 1)" class="px-2 py-0.5 bg-white/10 hover:bg-white/20 text-white rounded">Home +1</button>
+                  <button onclick="adjustScore('away', 1)" class="px-2 py-0.5 bg-white/10 hover:bg-white/20 text-white rounded">Away +1</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Inspector & Broadcast Telemetry (4 Cols) -->
+          <div class="lg:col-span-4 flex flex-col justify-between gap-4">
+            
+            <div class="bg-black/80 rounded-2xl border border-white/10 p-4">
+              <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+                <span class="text-xs font-mono font-bold text-cyan-400">FIELD CALIBRATION</span>
+                <span id="inspectorConfidence" class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                  99.9% CONF
+                </span>
+              </div>
+
+              <div class="space-y-2.5 text-xs font-mono">
+                <div>
+                  <span class="text-gray-400">Target Field:</span>
+                  <span id="inspectorTargetName" class="text-white font-bold ml-2">GAME CLOCK</span>
+                </div>
+                <div>
+                  <span class="text-gray-400">Recognized Digits:</span>
+                  <span id="inspectorDetectedVal" class="text-cyan-300 font-bold ml-2 text-sm">00:28.4</span>
+                </div>
+                <div class="pt-2 border-t border-white/5 text-[11px] text-gray-400">
+                  <span>✓ 7-Segment Neural Filter Active</span><br>
+                  <span>✓ Debounce Anti-Flicker Enabled</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Output Dispatch Log -->
+            <div class="bg-black/80 rounded-2xl border border-white/10 p-4 flex-1 flex flex-col justify-between">
+              <div class="text-xs font-mono font-bold text-emerald-400 border-b border-white/10 pb-2 mb-2">
+                BROADCAST OUTPUT DISPATCH
+              </div>
+              <pre id="liveTelemetryLog" class="font-mono text-[11px] leading-relaxed text-gray-300 overflow-x-auto whitespace-pre-wrap">
+// Initializing OCR dispatch...
+              </pre>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 4. PRODUCT FEATURE SECTIONS & WORKFLOWS -->
+  <!-- =================================================================== -->
+  <section id="workflows" class="min-h-screen relative flex flex-col justify-center py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    
+    <!-- Giant Background Section Number -->
+    <div class="absolute right-8 top-12 editorial-giant-num">02</div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      
+      <!-- Section Header -->
+      <div class="mb-14 max-w-2xl">
+        <div class="tech-kicker mb-3">
+          <span class="pulse-dot"></span>
+          <span>02 // SUPPORTED WORKFLOWS</span>
+        </div>
+        <h2 class="editorial-title text-3xl sm:text-5xl text-white mb-4">
+          SEAMLESS BROADCAST INTEGRATION
+        </h2>
+        <p class="font-tech text-base text-gray-300">
+          Built from the ground up for live sports television, university athletics, and livestreaming setups using industry standard production tools.
+        </p>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Workflow 1: vMix Web Controller -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">vMix Web Controller Sync</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Connects to the vMix Web Controller API (<code class="text-cyan-300">http://localhost:8088/api/</code>). Auto-discovers active vMix title inputs and text fields, pumping clock and score updates with non-blocking async HTTP calls.
+          </p>
+          <div class="text-xs font-mono text-cyan-400">● Port 8088 Ready</div>
+        </div>
+
+        <!-- Workflow 2: OBS Studio GDI+ Text Files -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-center text-emerald-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">OBS Studio File Broadcaster</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Generates real-time text files (<code class="text-emerald-300">clock.txt</code>, <code class="text-emerald-300">home.txt</code>, <code class="text-emerald-300">away.txt</code>, <code class="text-emerald-300">shot_clock.txt</code>) in <code class="text-gray-300">scoresight/out_files/</code> for OBS Studio Text (GDI+) sources set to "Read from file".
+          </p>
+          <div class="text-xs font-mono text-emerald-400">● Real-time text write</div>
+        </div>
+
+        <!-- Workflow 3: 4-Corner Keystone Correction -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-400/30 flex items-center justify-center text-purple-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">4-Corner Keystone Pinning</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Handles angled stadium cameras shooting from the press box, stands, or floor. Interactive 4-corner perspective pins de-skew trapezoidal camera perspectives into a crisp, flat rectangular plane.
+          </p>
+          <div class="text-xs font-mono text-purple-400">● 3D Homography Matrix</div>
+        </div>
+
+        <!-- Workflow 4: Multi-Source Video Feeds -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">Capture Cards & IP Streams</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Direct ingestion from USB HDMI capture cards (Elgato Cam Link, Magewell, generic USB dongles via DirectShow), video files (<code class="text-gray-300">.mp4</code>, <code class="text-gray-300">.mov</code>), and network streams (RTSP, SRT).
+          </p>
+          <div class="text-xs font-mono text-amber-400">● DirectShow / RTSP / SRT</div>
+        </div>
+
+        <!-- Workflow 5: Anti-Flicker Filter -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">Monotonic Debounce Filter</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Arena LEDs multiplex at high frequencies which can cause camera shutter flicker. The built-in monotonic debounce filter prevents digits from fluttering or falsely jumping backward.
+          </p>
+          <div class="text-xs font-mono text-cyan-400">● Temporal stabilization</div>
+        </div>
+
+        <!-- Workflow 6: Apple iOS Companion -->
+        <div class="editorial-card p-6">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-center text-emerald-400 mb-5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="font-tech font-bold text-xl text-white mb-2">Apple iOS Mobile View</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-4">
+            Instant mobile scoreboard for iPhone and iPad via Safari Progressive Web App ("Add to Home Screen"). Sideline staff and producers can monitor digits wirelessly with zero latency.
+          </p>
+          <div class="text-xs font-mono text-emerald-400">● Mobile scoreboard sync</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 5. HOW TO GET STARTED (3-STEP EDITORIAL STORY) -->
+  <!-- =================================================================== -->
+  <section id="getting-started" class="min-h-screen relative flex flex-col justify-center py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    
+    <!-- Giant Background Section Number -->
+    <div class="absolute right-8 top-12 editorial-giant-num">03</div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      
+      <div class="mb-14 max-w-2xl">
+        <div class="tech-kicker mb-3">
+          <span class="pulse-dot"></span>
+          <span>03 // GETTING STARTED</span>
+        </div>
+        <h2 class="editorial-title text-3xl sm:text-5xl text-white mb-4">
+          THREE STEPS TO AUTOMATED GRAPHICS
+        </h2>
+        <p class="font-tech text-base text-gray-300">
+          Get up and running in under five minutes with your existing camera and production software.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Step 1 -->
+        <div class="editorial-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-4xl font-display font-black text-cyan-400 mb-6">01</div>
+            <h3 class="font-tech font-bold text-2xl text-white mb-3">Position Camera & Connect Feed</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Aim your video camera or capture card at the stadium scoreboard. Connect it via HDMI capture card, USB webcam, or network RTSP stream in SCOREBUG OCR.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-gray-500">
+            PHASE 1 // INPUT CONFIGURATION
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="editorial-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-4xl font-display font-black text-cyan-400 mb-6">02</div>
+            <h3 class="font-tech font-bold text-2xl text-white mb-3">Drag Boxes & Flatten Angle</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Use 4 corner pins to flatten any angled camera view. Then drag bounding boxes over Game Clock, Home Score, Away Score, Period, and Shot Clock.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-gray-500">
+            PHASE 2 // CALIBRATION & HOMOGRAPHY
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="editorial-card p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-4xl font-display font-black text-emerald-400 mb-6">03</div>
+            <h3 class="font-tech font-bold text-2xl text-white mb-3">Bind to vMix or OBS</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Click "Test Connection & Fetch vMix Titles" to auto-link your scorebug graphics. Or point OBS Studio text sources to <code class="text-gray-300">clock.txt</code>. You are on the air!
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-white/10 text-xs font-mono text-gray-500">
+            PHASE 3 // ZERO-LATENCY ON-AIR SYNC
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 6. DEDICATED WINDOWS SETUP SECTION -->
+  <!-- =================================================================== -->
+  <section id="windows-setup" class="min-h-screen relative flex flex-col justify-center py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-black/40">
+    
+    <!-- Giant Background Section Number -->
+    <div class="absolute right-8 top-12 editorial-giant-num">04</div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      
+      <div class="mb-10 max-w-2xl">
+        <div class="tech-kicker mb-3">
+          <span class="pulse-dot"></span>
+          <span>04 // WINDOWS SETUP & DOWNLOAD</span>
+        </div>
+        <h2 class="editorial-title text-3xl sm:text-5xl text-white mb-4">
+          WINDOWS INSTALLATION
+        </h2>
+        <p class="font-tech text-base text-gray-300">
+          The core desktop application runs natively on 64-bit Windows systems with zero installation hassle.
+        </p>
+      </div>
+
+      <!-- Main Windows Download Box -->
+      <div class="editorial-card p-8 sm:p-12 border-cyan-400/40 shadow-[0_0_50px_rgba(0,240,255,0.15)] mb-8">
+        <div class="corner-crosshair top-left"></div>
+        <div class="corner-crosshair top-right"></div>
+        <div class="corner-crosshair bottom-left"></div>
+        <div class="corner-crosshair bottom-right"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold mb-4">
+              <span>● FREE TO DOWNLOAD</span>
+              <span class="text-gray-500">•</span>
+              <span>STANDALONE PACKAGE (105 MB)</span>
+            </div>
+
+            <h3 class="font-display font-black text-2xl sm:text-4xl text-white mb-4">
+              SCOREBUG OCR FOR WINDOWS
+            </h3>
+            
+            <p class="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">
+              Complete Windows application package containing <code class="text-cyan-300">SCOREBUG_OCR.exe</code> and all required computer vision and machine learning runtimes. Simply extract the zip archive and double-click the executable to launch immediately.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-mono text-gray-400 mb-6">
+              <div>
+                <span class="text-gray-500 block">Operating System:</span>
+                <span class="text-white font-semibold">Windows 10 / 11 (64-bit)</span>
+              </div>
+              <div>
+                <span class="text-gray-500 block">Package File:</span>
+                <span class="text-cyan-300 font-semibold">SCOREBUG_OCR_Windows.zip</span>
+              </div>
+              <div>
+                <span class="text-gray-500 block">Software License:</span>
+                <span class="text-emerald-400 font-semibold">100% Free to Use</span>
+              </div>
+            </div>
+
+            <!-- Windows Action Button -->
+            <a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary text-base py-4 px-8 shadow-xl inline-flex">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              <span>Download Windows Package (.zip — 105 MB)</span>
+            </a>
+            <p class="text-[11px] font-mono text-gray-500 mt-2">
+              Downloads start when you click. Contains <code class="text-gray-400">SCOREBUG_OCR.exe</code> ready to run.
+            </p>
+          </div>
+
+          <!-- Right: Windows Installation Steps -->
+          <div class="lg:col-span-5 bg-black/60 rounded-xl border border-white/10 p-6 font-mono text-xs text-gray-300 space-y-4">
+            <div class="text-cyan-400 font-bold border-b border-white/10 pb-2">
+              WINDOWS QUICK START STEPS
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold">1.</span>
+              <span>Click the button to download <code class="text-white">SCOREBUG_OCR_Windows.zip</code>.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold">2.</span>
+              <span>Right-click the zip file and choose <strong>Extract All</strong> to any folder on your PC.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold">3.</span>
+              <span>Double-click <code class="text-cyan-300">SCOREBUG_OCR.exe</code> to launch the application. Select your video input and start recognizing scoreboard digits!</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 7. DEDICATED iOS SETUP SECTION -->
+  <!-- =================================================================== -->
+  <section id="ios-setup" class="min-h-screen relative flex flex-col justify-center py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    
+    <!-- Giant Background Section Number -->
+    <div class="absolute right-8 top-12 editorial-giant-num">05</div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      
+      <div class="mb-10 max-w-2xl">
+        <div class="tech-kicker mb-3">
+          <span class="pulse-dot"></span>
+          <span>05 // APPLE iOS SETUP & MOBILE CLIENT</span>
+        </div>
+        <h2 class="editorial-title text-3xl sm:text-5xl text-white mb-4">
+          APPLE iOS SETUP & SOURCE
+        </h2>
+        <p class="font-tech text-base text-gray-300">
+          The companion application runs on iPhone and iPad, allowing floor personnel and directors to monitor and adjust scores wirelessly.
+        </p>
+      </div>
+
+      <!-- iOS Installation Card -->
+      <div class="editorial-card p-8 sm:p-12 border-emerald-400/40 shadow-[0_0_50px_rgba(0,255,157,0.1)] mb-8">
+        <div class="corner-crosshair top-left"></div>
+        <div class="corner-crosshair top-right"></div>
+        <div class="corner-crosshair bottom-left"></div>
+        <div class="corner-crosshair bottom-right"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold mb-4">
+              <span>● FREE TO USE</span>
+              <span class="text-gray-500">•</span>
+              <span>NATIVE SWIFT & SAFARI PWA</span>
+            </div>
+
+            <h3 class="font-display font-black text-2xl sm:text-4xl text-white mb-4">
+              SCOREBUG OCR FOR iOS & iPadOS
+            </h3>
+            
+            <p class="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">
+              You can run SCOREBUG OCR on Apple devices in two ways:
+              <br><br>
+              <strong>1. Instant Safari PWA (No Mac Required):</strong> Open Safari on your iPhone/iPad connected to the same Wi-Fi, visit your PC's IP (<code class="text-emerald-300">http://&lt;PC-IP&gt;:8099/app</code>), and tap <strong>Add to Home Screen</strong>.
+              <br><br>
+              <strong>2. Native Xcode Project:</strong> Download the complete SwiftUI source code (<code class="text-emerald-300">ScoreBugOCR_iOS.zip</code>) containing <code class="text-white">ContentView.swift</code>, <code class="text-white">ScoreBugOCRApp.swift</code>, and asset catalogs.
+            </p>
+
+            <div class="p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/20 text-xs font-mono text-cyan-300 mb-6">
+              ℹ Note: The Windows setup file cannot be installed on iOS. Use the Safari Web App or the Xcode source project package below.
+            </div>
+
+            <!-- iOS Action Button -->
+            <div class="flex flex-wrap gap-4">
+              <a href="ScoreBugOCR_iOS.zip" download="ScoreBugOCR_iOS.zip" onclick="downloadIosPackage(event)" class="btn-editorial-ghost text-base py-4 px-8 border-emerald-400/50 text-white hover:text-emerald-300 inline-flex">
+                <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.3c.6-1.06 1.05-2.52.88-3.99-1.22.05-2.69.82-3.52 1.8-.74.85-1.39 2.22-1.21 3.55 1.36.1 2.76-.71 3.85-1.36z"/></svg>
+                <span>Download iOS Xcode Project (.zip — 633 KB)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: iOS Safari PWA Step-by-Step Instructions -->
+          <div id="iosInstructionsBox" class="lg:col-span-5 bg-black/60 rounded-xl border border-white/10 p-6 font-mono text-xs text-gray-300 space-y-4">
+            <div class="text-emerald-400 font-bold border-b border-white/10 pb-2">
+              METHOD 1: INSTANT SAFARI PWA SETUP
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold">1.</span>
+              <span>Enable <strong>Outputs → Web Server / iOS App</strong> in SCOREBUG OCR on Windows.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold">2.</span>
+              <span>Open <strong>Safari</strong> on your iPhone or iPad connected to the same Wi-Fi.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold">3.</span>
+              <span>Navigate to <code class="text-white">http://&lt;YOUR-PC-IP&gt;:8099/app</code>.</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-400 font-bold">4.</span>
+              <span>Tap the <strong>Share</strong> button and select <strong>"Add to Home Screen"</strong>. SCOREBUG OCR now launches full-screen!</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 8. SIMPLE PRODUCT FOOTER -->
+  <!-- =================================================================== -->
+  <footer class="py-16 border-t border-white/10 bg-black/80 relative z-10 text-xs font-mono text-gray-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        
+        <!-- Brand Summary -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-2 font-display font-black text-white text-base">
+            <span>SCOREBUG</span><span class="text-cyan-400">OCR</span>
+            <span class="text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-mono">FREE FOR ALL</span>
+          </div>
+          <p class="text-gray-400 font-sans text-sm max-w-md">
+            The free, open-standard optical character recognition tool designed to read physical arena scoreboard images and synchronize scores into broadcast graphics with zero manual data entry.
+          </p>
+        </div>
+
+        <!-- Product Links -->
+        <div class="space-y-2">
+          <div class="text-white font-bold mb-3 tracking-wider uppercase">Platforms</div>
+          <div><a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" class="hover:text-cyan-400 transition">Windows 10 / 11 Package (105 MB)</a></div>
+          <div><a href="ScoreBugOCR_iOS.zip" download="ScoreBugOCR_iOS.zip" class="hover:text-cyan-400 transition">Apple iOS Xcode Source (633 KB)</a></div>
+          <div><a href="#recognition" class="hover:text-cyan-400 transition">OCR Calibration Lab</a></div>
+          <div><a href="#workflows" class="hover:text-cyan-400 transition">vMix & OBS Workflows</a></div>
+        </div>
+
+        <!-- Support & Compatibility -->
+        <div class="space-y-2">
+          <div class="text-white font-bold mb-3 tracking-wider uppercase">Integration</div>
+          <div><a href="https://vmix.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">vMix Web API Guide</a></div>
+          <div><a href="https://obsproject.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">OBS Studio Text (GDI+)</a></div>
+          <div><a href="#getting-started" class="hover:text-white transition">Quick Start Guide</a></div>
+          <div><a href="#hero" class="hover:text-cyan-400 transition">Back to Top ↑</a></div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Disclaimer -->
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-gray-500">
+        <div>
+          &copy; 2026 SCOREBUG OCR. Free software for sports broadcasters.
+        </div>
+        <div class="text-right">
+          Visual layout reference: <a href="https://gpg.dops.agency/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-400 underline">DOPS Agency</a>.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
