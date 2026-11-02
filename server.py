@@ -27,7 +27,25 @@ class ScorebugWebHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         path_lower = self.path.lower().split("?")[0]
 
-        # 1. Windows Download Route
+        # 1. Direct Executable Download: SCOREBUG_OCR.exe
+        if path_lower in ["/scorebug_ocr.exe", "/download/scorebug_ocr.exe", "/download/exe"]:
+            exe_target = os.path.join(BASE_DIR, "SCOREBUG_OCR.exe")
+            if os.path.exists(exe_target):
+                file_size = os.path.getsize(exe_target)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/vnd.microsoft.portable-executable")
+                self.send_header("Content-Disposition", 'attachment; filename="SCOREBUG_OCR.exe"')
+                self.send_header("Content-Length", str(file_size))
+                self.end_headers()
+                with open(exe_target, 'rb') as f:
+                    while chunk := f.read(64 * 1024):
+                        self.wfile.write(chunk)
+                return
+            else:
+                self.send_error(404, "SCOREBUG_OCR.exe file not found.")
+                return
+
+        # 2. Windows Zip Package Route
         if path_lower in [
             "/scorebug_ocr_windows.zip",
             "/download/windows",
@@ -70,6 +88,17 @@ class ScorebugWebHandler(SimpleHTTPRequestHandler):
                 return
             else:
                 self.send_error(404, "iOS source package not found.")
+                return
+
+        # 3. Clean route for /thank-you
+        if path_lower in ["/thank-you", "/thankyou"]:
+            target = os.path.join(BASE_DIR, "thank-you.html")
+            if os.path.exists(target):
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.end_headers()
+                with open(target, 'rb') as f:
+                    self.wfile.write(f.read())
                 return
 
         return super().do_GET()

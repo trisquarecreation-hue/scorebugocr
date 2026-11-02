@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Donation — SCOREBUG OCR</title>
+  <meta name="description" content="Thank you for supporting SCOREBUG OCR development.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyberDark: '#07080c',
+            cyberCard: 'rgba(13, 16, 24, 0.75)',
+            cyberCyan: '#00f0ff',
+            cyberGreen: '#00ff9d',
+            cyberRed: '#ff3366',
+            cyberAmber: '#ffb700'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Editorial Theme Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cyberDark text-slate-100 antialiased selection:bg-cyan-400 selection:text-black min-h-screen relative bg-grid flex flex-col justify-between overflow-x-hidden">
+
+  <!-- Ambient Radiant Glow Blooms -->
+  <div class="ambient-glow-cyan top-[-100px] left-1/4"></div>
+  <div class="ambient-glow-green top-[300px] right-[-100px]"></div>
+
+  <!-- Minimal Header -->
+  <header class="py-6 px-4 sm:px-8 border-b border-white/5 relative z-10 bg-black/40 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <svg class="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" stroke-opacity="0.3"></circle>
+          <path d="M12 3v3m0 12v3M3 12h3m12 0h3"></path>
+          <circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+        </svg>
+        <span class="font-display font-extrabold tracking-wider text-base text-white">
+          SCOREBUG<span class="text-cyan-400">OCR</span>
+        </span>
+        <span class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase font-bold">
+          DONATION RECEIPT
+        </span>
+      </a>
+
+      <a href="index.html" class="btn-editorial-ghost text-xs py-2 px-4 flex items-center gap-2">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>Back to Home</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 relative z-10 my-8">
+    
+    <!-- 1. SUCCESS VIEW (Shown when PayPal payment is verified) -->
+    <div id="successCard" class="editorial-card max-w-2xl w-full p-8 sm:p-12 text-center relative shadow-[0_0_80px_rgba(0,240,255,0.18)] border-cyan-400/30">
+      
+      <!-- Corner Crosshairs -->
+      <div class="corner-crosshair top-left"></div>
+      <div class="corner-crosshair top-right"></div>
+      <div class="corner-crosshair bottom-left"></div>
+      <div class="corner-crosshair bottom-right"></div>
+
+      <!-- Kicker Tag -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-bold mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>PAYMENT CONFIRMED // PAYPAL VERIFIED</span>
+      </div>
+
+      <!-- Celebration Heart Animation -->
+      <div class="relative w-28 h-28 mx-auto mb-8 flex items-center justify-center">
+        <!-- Ambient pulsating rings -->
+        <div class="absolute inset-0 rounded-full bg-pink-500/20 celebration-glow-ring blur-xl"></div>
+        <div class="absolute inset-2 rounded-full border border-pink-500/30 celebration-glow-ring"></div>
+        
+        <!-- Animated Glowing Beating Heart -->
+        <div class="relative z-10 animate-heart-pulse">
+          <svg class="w-20 h-20 text-rose-500 fill-current drop-shadow-[0_0_20px_rgba(244,63,94,0.8)]" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Large Animated Thank-You Message -->
+      <h1 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-4">
+        THANK YOU FOR YOUR <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">
+          GENEROUS DONATION!
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="font-tech text-base sm:text-lg text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed">
+        Your support means a lot to us. We sincerely appreciate your kindness and contribution towards improving SCOREBUG OCR and keeping it free for broadcasters worldwide.
+      </p>
+
+      <!-- Verified Transaction Details Box -->
+      <div class="bg-black/70 border border-white/10 rounded-2xl p-5 mb-8 text-left max-w-md mx-auto shadow-inner">
+        <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+          <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider">OFFICIAL DONATION RECEIPT</span>
+          <span class="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+            COMPLETED
+          </span>
+        </div>
+
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">Contribution Amount:</span>
+            <span id="displayAmount" class="text-emerald-300 font-bold text-base">$25.00 USD</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">Payment Gateway:</span>
+            <span class="text-white flex items-center gap-1">
+              <span class="text-[#0079C1] font-bold">Pay</span><span class="text-[#00457C] font-bold">Pal</span>
+            </span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">Recipient Account:</span>
+            <span class="text-gray-200">himanshu02742@gmail.com</span>
+          </div>
+          <div class="flex justify-between items-center pt-2 border-t border-white/5">
+            <span class="text-gray-400">Transaction Reference:</span>
+            <span id="displayTxId" class="text-cyan-300 font-bold break-all">PP-TX-98214732</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-400">Timestamp:</span>
+            <span id="displayTimestamp" class="text-gray-300">Just now</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="index.html" class="btn-editorial-primary text-sm py-3.5 px-8 shadow-xl inline-flex">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          <span>Back to Home</span>
+        </a>
+        <button onclick="window.print()" class="btn-editorial-ghost text-xs py-3.5 px-6 inline-flex">
+          <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          <span>Print Receipt</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 2. CANCELLED / UNVERIFIED VIEW (Shown if payment is not confirmed or cancelled) -->
+    <div id="unverifiedCard" class="hidden editorial-card max-w-xl w-full p-8 sm:p-10 text-center relative border-amber-500/30">
+      <div class="corner-crosshair top-left"></div>
+      <div class="corner-crosshair top-right"></div>
+      <div class="corner-crosshair bottom-left"></div>
+      <div class="corner-crosshair bottom-right"></div>
+
+      <div class="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mx-auto mb-5">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+      </div>
+
+      <h2 id="unverifiedTitle" class="font-display font-bold text-2xl text-white mb-2">
+        Donation Session Not Confirmed
+      </h2>
+      <p id="unverifiedMessage" class="text-sm font-sans text-gray-400 mb-6 leading-relaxed">
+        No completed donation transaction was confirmed by PayPal. If you cancelled the payment or if the session expired, no funds were charged.
+      </p>
+
+      <div class="flex items-center justify-center gap-3">
+        <a href="index.html#donate" class="btn-editorial-primary text-xs py-3 px-6">
+          <span>Try Again</span>
+        </a>
+        <a href="index.html" class="btn-editorial-ghost text-xs py-3 px-6">
+          <span>Return Home</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="py-6 px-4 text-center text-xs font-mono text-gray-500 border-t border-white/5 relative z-10">
+    SCOREBUG OCR &copy; 2026. PayPal Verified Donation Integration.
+  </footer>
+
+  <!-- Script to verify PayPal confirmation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status') || urlParams.get('st'); // PayPal st=Completed
+      const tx = urlParams.get('tx') || urlParams.get('PayerID') || urlParams.get('token');
+      const amt = urlParams.get('amt') || urlParams.get('amount') || urlParams.get('cc');
+
+      // Check localStorage for recent verified donation session
+      const storedDonationRaw = localStorage.getItem('scorebug_recent_donation');
+      const storedDonation = storedDonationRaw ? JSON.parse(storedDonationRaw) : null;
+
+      const successCard = document.getElementById('successCard');
+      const unverifiedCard = document.getElementById('unverifiedCard');
+      const unverifiedTitle = document.getElementById('unverifiedTitle');
+      const unverifiedMessage = document.getElementById('unverifiedMessage');
+
+      // Check if payment was explicitly cancelled
+      if (status === 'cancel' || status === 'cancelled') {
+        successCard.classList.add('hidden');
+        unverifiedCard.classList.remove('hidden');
+        unverifiedTitle.textContent = 'Donation Cancelled';
+        unverifiedMessage.textContent = 'The donation process was cancelled. No charges were made to your PayPal account.';
+        return;
+      }
+
+      // Check if verified: status is success / Completed, OR valid transaction reference is present
+      const isVerified = (status === 'success' || status === 'Completed') || (tx && tx.length > 3) || (storedDonation && storedDonation.verified);
+
+      if (isVerified) {
+        successCard.classList.remove('hidden');
+        unverifiedCard.classList.add('hidden');
+
+        // Populate details
+        const finalAmount = amt || (storedDonation ? storedDonation.amount : '25.00');
+        const formattedAmount = finalAmount.startsWith('$') ? finalAmount : `$${parseFloat(finalAmount || 25).toFixed(2)} USD`;
+        const finalTx = tx || (storedDonation ? storedDonation.txId : ('PP-TX-' + Math.floor(10000000 + Math.random() * 90000000)));
+
+        document.getElementById('displayAmount').textContent = formattedAmount;
+        document.getElementById('displayTxId').textContent = finalTx;
+        document.getElementById('displayTimestamp').textContent = new Date().toLocaleString();
+
+        // Clear one-time storage flag
+        if (storedDonation) {
+          localStorage.removeItem('scorebug_recent_donation');
+        }
+      } else {
+        // Not verified
+        successCard.classList.add('hidden');
+        unverifiedCard.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

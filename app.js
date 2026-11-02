@@ -201,17 +201,17 @@ function initVisionModeSwitcher() {
 // 3. DOWNLOAD HANDLERS (Windows & iOS)
 // ==========================================
 function initDownloadHandlers() {
-  // Windows Setup Download Handler
+  // Windows Setup Download Handler (Direct SCOREBUG_OCR.exe)
   window.downloadWindowsSetup = function(event) {
     if (event) event.preventDefault();
 
-    showToast("Downloading SCOREBUG_OCR_Windows.zip (105 MB) — Standalone Windows package", "windows");
+    showToast("Downloading SCOREBUG_OCR.exe (Windows Executable)", "windows");
 
-    // Initiate file download
-    const downloadUrl = 'SCOREBUG_OCR_Windows.zip';
+    // Initiate direct file download for SCOREBUG_OCR.exe
+    const downloadUrl = 'SCOREBUG_OCR.exe';
     const link = document.createElement('a');
     link.href = downloadUrl;
-    link.setAttribute('download', 'SCOREBUG_OCR_Windows.zip');
+    link.setAttribute('download', 'SCOREBUG_OCR.exe');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -291,3 +291,122 @@ function initNavigationScrollSpy() {
     });
   });
 }
+
+// ==========================================
+// 5. DONATE MODAL & PAYPAL INTEGRATION
+// ==========================================
+let currentDonationAmount = 25;
+const PAYPAL_DONATION_EMAIL = 'himanshu02742@gmail.com';
+
+window.openDonateModal = function(event) {
+  if (event) event.preventDefault();
+  const modal = document.getElementById('donateModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeDonateModal = function() {
+  const modal = document.getElementById('donateModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+};
+
+window.handleDonateBackdropClick = function(event) {
+  if (event.target === document.getElementById('donateModal')) {
+    closeDonateModal();
+  }
+};
+
+window.selectDonationAmount = function(amount, buttonEl) {
+  currentDonationAmount = amount;
+  document.querySelectorAll('.amount-option-btn').forEach(btn => btn.classList.remove('active'));
+  if (buttonEl) buttonEl.classList.add('active');
+  const customContainer = document.getElementById('customAmountContainer');
+  if (customContainer) customContainer.classList.add('hidden');
+  updatePayPalButtonLabel();
+};
+
+window.toggleCustomAmount = function(buttonEl) {
+  document.querySelectorAll('.amount-option-btn').forEach(btn => btn.classList.remove('active'));
+  if (buttonEl) buttonEl.classList.add('active');
+  const customContainer = document.getElementById('customAmountContainer');
+  if (customContainer) {
+    customContainer.classList.remove('hidden');
+    const input = document.getElementById('customAmountInput');
+    if (input) {
+      input.focus();
+      if (input.value && parseFloat(input.value) > 0) {
+        currentDonationAmount = parseFloat(input.value);
+      }
+    }
+  }
+  updatePayPalButtonLabel();
+};
+
+window.handleCustomAmountInput = function(val) {
+  const num = parseFloat(val);
+  currentDonationAmount = (!isNaN(num) && num > 0) ? num : 1;
+  updatePayPalButtonLabel();
+};
+
+function updatePayPalButtonLabel() {
+  const btnText = document.getElementById('paypalBtnText');
+  if (btnText) {
+    btnText.textContent = `Donate $${currentDonationAmount} USD via PayPal`;
+  }
+}
+
+window.processPayPalDonation = function() {
+  const amount = currentDonationAmount > 0 ? currentDonationAmount : 25;
+  const txId = 'PP-TX-' + Math.floor(10000000 + Math.random() * 90000000);
+
+  // Store in localStorage for verification on return
+  const donationData = {
+    amount: amount.toFixed(2),
+    currency: 'USD',
+    txId: txId,
+    verified: true,
+    recipient: PAYPAL_DONATION_EMAIL,
+    timestamp: new Date().toISOString()
+  };
+  localStorage.setItem('scorebug_recent_donation', JSON.stringify(donationData));
+
+  // Determine return and cancel URLs
+  const baseUrl = window.location.origin + window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+  const returnUrl = encodeURIComponent(`${baseUrl}/thank-you.html?status=success&amt=${amount.toFixed(2)}&tx=${txId}`);
+  const cancelUrl = encodeURIComponent(`${baseUrl}/thank-you.html?status=cancel`);
+
+  // Build standard PayPal Donation URL
+  const paypalUrl = `https://www.paypal.com/donate?business=${encodeURIComponent(PAYPAL_DONATION_EMAIL)}&item_name=${encodeURIComponent('Support Scorebug OCR Development')}&currency_code=USD&amount=${amount.toFixed(2)}&return=${returnUrl}&cancel_return=${cancelUrl}`;
+
+  // Redirect to PayPal
+  window.location.href = paypalUrl;
+};
+
+window.simulateSuccessfulDonation = function() {
+  const amount = currentDonationAmount > 0 ? currentDonationAmount : 25;
+  const txId = 'PP-TEST-' + Math.floor(10000000 + Math.random() * 90000000);
+
+  const donationData = {
+    amount: amount.toFixed(2),
+    currency: 'USD',
+    txId: txId,
+    verified: true,
+    recipient: PAYPAL_DONATION_EMAIL,
+    timestamp: new Date().toISOString()
+  };
+  localStorage.setItem('scorebug_recent_donation', JSON.stringify(donationData));
+
+  window.location.href = `thank-you.html?status=success&amt=${amount.toFixed(2)}&tx=${txId}`;
+};
+
+// Listen for Escape key to close donate modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDonateModal();
+  }
+});

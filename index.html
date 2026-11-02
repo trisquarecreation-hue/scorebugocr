@@ -63,10 +63,18 @@
         <a href="#getting-started" class="nav-spy-link text-gray-400 hover:text-white transition">03 // GET STARTED</a>
         <a href="#windows-setup" class="nav-spy-link text-gray-400 hover:text-white transition">04 // WINDOWS</a>
         <a href="#ios-setup" class="nav-spy-link text-gray-400 hover:text-white transition">05 // iOS</a>
+        <a href="#donate" onclick="openDonateModal(event)" class="text-rose-400 hover:text-rose-300 font-bold flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 fill-current text-rose-500 animate-pulse" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>DONATE</span>
+        </a>
       </nav>
 
-      <!-- Prominent Free Download Button (Right Pill) -->
+      <!-- Prominent Free Download Button & Donate Button (Right Pill) -->
       <div class="flex items-center gap-2">
+        <button onclick="openDonateModal(event)" class="px-3.5 py-2 rounded-full border border-rose-500/40 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 font-mono text-xs font-bold flex items-center gap-1.5 transition shadow-[0_0_15px_rgba(244,63,94,0.25)]">
+          <svg class="w-3.5 h-3.5 fill-current text-rose-400" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>DONATE</span>
+        </button>
         <a href="#windows-setup" class="btn-editorial-primary text-xs sm:text-sm py-2.5 px-5 shadow-lg">
           <span>Free Downloads</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -112,13 +120,12 @@
         </div>
         
         <div class="lg:col-span-4 flex flex-col gap-3">
-          <a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary w-full text-center py-4">
+          <a href="SCOREBUG_OCR.exe" download="SCOREBUG_OCR.exe" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary w-full text-center py-4">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-            <span>Download for Windows (105 MB)</span>
+            <span>Download SCOREBUG_OCR.exe</span>
           </a>
-          <a href="#ios-setup" class="btn-editorial-ghost w-full text-center py-3.5 text-xs">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.3c.6-1.06 1.05-2.52.88-3.99-1.22.05-2.69.82-3.52 1.8-.74.85-1.39 2.22-1.21 3.55 1.36.1 2.76-.71 3.85-1.36z"/></svg>
-            <span>Apple iOS Setup & Source (633 KB)</span>
+          <a href="#windows-setup" class="btn-editorial-ghost w-full text-center py-3 text-xs">
+            <span>Windows ZIP & iOS Setup ↓</span>
           </a>
         </div>
       </div>
@@ -580,13 +587,18 @@
               </div>
             </div>
 
-            <!-- Windows Action Button -->
-            <a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary text-base py-4 px-8 shadow-xl inline-flex">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
-              <span>Download Windows Package (.zip — 105 MB)</span>
-            </a>
+            <!-- Windows Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="SCOREBUG_OCR.exe" download="SCOREBUG_OCR.exe" onclick="downloadWindowsSetup(event)" class="btn-editorial-primary text-base py-4 px-8 shadow-xl inline-flex">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+                <span>Download SCOREBUG_OCR.exe</span>
+              </a>
+              <a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" class="btn-editorial-ghost text-sm py-4 px-6 inline-flex">
+                <span>Download Full ZIP (105 MB)</span>
+              </a>
+            </div>
             <p class="text-[11px] font-mono text-gray-500 mt-2">
-              Downloads start when you click. Contains <code class="text-gray-400">SCOREBUG_OCR.exe</code> ready to run.
+              Direct executable: <code class="text-cyan-400 font-bold">SCOREBUG_OCR.exe</code> (6.8 MB).
             </p>
           </div>
 
@@ -739,7 +751,8 @@
         <!-- Product Links -->
         <div class="space-y-2">
           <div class="text-white font-bold mb-3 tracking-wider uppercase">Platforms</div>
-          <div><a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" class="hover:text-cyan-400 transition">Windows 10 / 11 Package (105 MB)</a></div>
+          <div><a href="SCOREBUG_OCR.exe" download="SCOREBUG_OCR.exe" class="hover:text-cyan-400 transition font-semibold text-white">SCOREBUG_OCR.exe (Direct Download)</a></div>
+          <div><a href="SCOREBUG_OCR_Windows.zip" download="SCOREBUG_OCR_Windows.zip" class="hover:text-cyan-400 transition">Windows Full Package (.zip — 105 MB)</a></div>
           <div><a href="ScoreBugOCR_iOS.zip" download="ScoreBugOCR_iOS.zip" class="hover:text-cyan-400 transition">Apple iOS Xcode Source (633 KB)</a></div>
           <div><a href="#recognition" class="hover:text-cyan-400 transition">OCR Calibration Lab</a></div>
           <div><a href="#workflows" class="hover:text-cyan-400 transition">vMix & OBS Workflows</a></div>
@@ -747,7 +760,8 @@
 
         <!-- Support & Compatibility -->
         <div class="space-y-2">
-          <div class="text-white font-bold mb-3 tracking-wider uppercase">Integration</div>
+          <div class="text-white font-bold mb-3 tracking-wider uppercase">Support & Community</div>
+          <div><a href="#donate" onclick="openDonateModal(event)" class="text-rose-400 hover:text-rose-300 transition font-bold flex items-center gap-1.5"><svg class="w-3.5 h-3.5 fill-current text-rose-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Donate via PayPal</a></div>
           <div><a href="https://vmix.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">vMix Web API Guide</a></div>
           <div><a href="https://obsproject.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">OBS Studio Text (GDI+)</a></div>
           <div><a href="#getting-started" class="hover:text-white transition">Quick Start Guide</a></div>
@@ -768,6 +782,105 @@
 
     </div>
   </footer>
+
+  <!-- =================================================================== -->
+  <!-- 9. DEDICATED DONATE POPUP / MODAL (PayPal Integration) -->
+  <!-- =================================================================== -->
+  <div id="donateModal" class="donate-modal-backdrop" onclick="handleDonateBackdropClick(event)">
+    <div class="donate-modal-content p-6 sm:p-8" onclick="event.stopPropagation()">
+      
+      <!-- Corner Crosshairs (DOPS Agency visual signature) -->
+      <div class="corner-crosshair top-left"></div>
+      <div class="corner-crosshair top-right"></div>
+      <div class="corner-crosshair bottom-left"></div>
+      <div class="corner-crosshair bottom-right"></div>
+
+      <!-- Close Button -->
+      <button onclick="closeDonateModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white transition p-1.5 rounded-full hover:bg-white/10" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono font-bold mb-3">
+          <svg class="w-3.5 h-3.5 fill-current text-rose-500 animate-pulse" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>SUPPORT INDEPENDENT DEVELOPMENT</span>
+        </div>
+        
+        <h3 class="font-display font-black text-2xl sm:text-3xl text-white mb-2">
+          SUPPORT SCOREBUG OCR
+        </h3>
+        
+        <!-- Friendly Message required by prompt -->
+        <p class="font-sans text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+          Support Our Work – Your contribution helps us continue improving and creating better experiences.
+        </p>
+      </div>
+
+      <!-- Predefined Donation Amount Options -->
+      <div class="mb-5">
+        <label class="block text-xs font-mono text-gray-400 mb-2.5 uppercase tracking-wider text-center">
+          Select Contribution Amount (USD):
+        </label>
+        
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-3">
+          <button type="button" onclick="selectDonationAmount(5, this)" class="amount-option-btn">$5</button>
+          <button type="button" onclick="selectDonationAmount(10, this)" class="amount-option-btn">$10</button>
+          <button type="button" onclick="selectDonationAmount(25, this)" class="amount-option-btn active">$25</button>
+          <button type="button" onclick="selectDonationAmount(50, this)" class="amount-option-btn">$50</button>
+          <button type="button" onclick="selectDonationAmount(100, this)" class="amount-option-btn">$100</button>
+          <button type="button" onclick="toggleCustomAmount(this)" id="customAmountToggleBtn" class="amount-option-btn text-xs font-mono">Custom</button>
+        </div>
+
+        <!-- Custom Amount Input Container (hidden by default, shown when Custom is selected) -->
+        <div id="customAmountContainer" class="hidden mt-3">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-cyan-400 font-mono font-bold">$</span>
+            <input id="customAmountInput" type="number" min="1" max="10000" step="1" placeholder="Enter custom USD amount (e.g. 15)" oninput="handleCustomAmountInput(this.value)" class="w-full bg-black/80 border border-cyan-400/50 rounded-xl pl-8 pr-4 py-2.5 text-sm font-mono text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+          </div>
+        </div>
+      </div>
+
+      <!-- Recipient & PayPal Security Badge -->
+      <div class="bg-black/60 rounded-xl border border-white/10 p-3.5 mb-6 text-xs font-mono flex items-center justify-between text-gray-300">
+        <div class="flex items-center gap-2.5">
+          <svg class="w-4 h-4 text-cyan-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          <div>
+            <span class="text-gray-400 block text-[10px]">Verified PayPal Recipient:</span>
+            <span class="text-white font-semibold">himanshu02742@gmail.com</span>
+          </div>
+        </div>
+        <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 font-bold">
+          256-Bit TLS
+        </span>
+      </div>
+
+      <!-- PayPal Action Button -->
+      <div class="space-y-3">
+        <button id="paypalSubmitBtn" onclick="processPayPalDonation()" class="btn-paypal-submit">
+          <!-- PayPal Monogram SVG -->
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.79.79 0 0 1 .779-.663h7.24c3.483 0 5.86 1.74 5.485 5.22-.387 3.593-2.613 5.568-6.095 5.568H8.76l-1.05 6.643a.64.64 0 0 1-.634.849z" fill="#003087"/>
+            <path d="M9.096 13.845l1.092-6.916a.79.79 0 0 1 .78-.663h5.272c2.404 0 4.177 1.077 3.86 3.93-.327 2.946-2.08 4.64-4.887 4.64H11.23a.87.87 0 0 0-.86.736l-.88 5.578a.64.64 0 0 1-.635.545H6.284l.896-5.67a.87.87 0 0 1 .86-.736h1.056z" fill="#0079C1"/>
+          </svg>
+          <span id="paypalBtnText">Donate $25 USD via PayPal</span>
+        </button>
+
+        <p class="text-[11px] font-mono text-gray-500 text-center">
+          You will be redirected to PayPal's secure checkout to complete payment.
+        </p>
+
+        <!-- Test Simulation Mode Option for Immediate Verification -->
+        <div class="pt-2 text-center border-t border-white/5">
+          <button type="button" onclick="simulateSuccessfulDonation()" class="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1.5 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <span>Simulate Successful Donation & Test Thank You Page</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Main JavaScript File -->
   <script src="app.js"></script>

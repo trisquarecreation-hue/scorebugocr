@@ -361,3 +361,138 @@ html {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* ==========================================================================
+   DONATE MODAL & THANK YOU PAGE STYLES
+   ========================================================================== */
+
+/* Donate Modal Backdrop */
+.donate-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 6, 10, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.donate-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.donate-modal-content {
+  background: rgba(11, 15, 23, 0.95);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 240, 255, 0.15);
+  border-radius: 24px;
+  max-width: 540px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.donate-modal-backdrop.active .donate-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Donation Amount Pill Options */
+.amount-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-tech);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+.amount-option-btn:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.amount-option-btn.active {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 255, 157, 0.15) 100%);
+  border-color: var(--accent-cyan);
+  color: #00f0ff;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.3);
+}
+
+/* PayPal Button */
+.btn-paypal-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 24px;
+  background: #ffc439;
+  border: 1px solid #ffb000;
+  border-radius: 14px;
+  color: #003087;
+  font-family: var(--font-tech);
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 196, 57, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.btn-paypal-submit:hover {
+  background: #ffbb1a;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(255, 196, 57, 0.4);
+}
+.btn-paypal-submit:active {
+  transform: translateY(0);
+}
+
+/* Beating Glowing Heart Animation */
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(255, 51, 102, 0.6));
+  }
+  50% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 28px rgba(255, 51, 102, 0.95));
+  }
+}
+.animate-heart-pulse {
+  animation: heartPulse 1.8s ease-in-out infinite;
+}
+
+/* Celebration Confetti Particle Rings */
+@keyframes celebrationRings {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+.celebration-glow-ring {
+  animation: celebrationRings 3s ease-in-out infinite;
+}
+
